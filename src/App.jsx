@@ -1,10 +1,9 @@
 import React from 'react';
+import TodoApp from './components/TodoApp';
 
 function App(){
     return(
-        <div>
-            <h1>Olá mundo</h1>
-        </div>
+        <TodoApp />
     );
 }
 
