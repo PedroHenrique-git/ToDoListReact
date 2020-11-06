@@ -19,8 +19,10 @@ class ListItem extends React.Component{
                 <li key={index}>
                     <h1>{task.nameTask}</h1>
                     <p>{task.descTask}</p>
-                    <ButtonEditar onClick={() => this.props.update(index)} value={this.props.text} className="editar"/>
-                    <ButtonExcluir onClick={() => this.props.delete(index)}  value="Exluir" className="exluir"/>
+                    <div className="div-buttons">
+                        <ButtonEditar onClick={() => this.props.update(index)} value={this.props.text} className="editar"/>
+                        <ButtonExcluir onClick={() => this.props.delete(index)}  value="Exluir" className="exluir"/>
+                    </div>
                 </li>
                 ))}
             </ul>
@@ -59,16 +61,19 @@ export default class TodoApp extends React.Component{
             valueInput: task[0].nameTask,
             valueTextArea: task[0].descTask,
         });
+
+        if(this.state.valueInput === '' || this.state.valueTextArea === ''){
+            alert('Nome da tarefa ou descrição inválidos')
+        }
         
         task[0].nameTask = this.state.valueInput;
         task[0].descTask = this.state.valueTextArea;
         
         console.log(task[0])
 
+        this.state.tasks.splice(index, 0,task[0]);
         this.setState({
-            tasks: this.state.tasks.concat(task[0]),
-            valueInput: '',
-            valueTextArea: '',
+            tasks: this.state.tasks,
         });
     }
     changeId(){
@@ -88,6 +93,12 @@ export default class TodoApp extends React.Component{
     }
     handleSubmit(event){
         event.preventDefault();
+
+        if(this.state.valueInput === '' || this.state.valueTextArea === ''){
+            alert('Nome da tarefa ou descrição inválidos')
+            return;
+        }
+
         this.setState({
             tasks: this.state.tasks.concat({
                 id: this.state.id,
