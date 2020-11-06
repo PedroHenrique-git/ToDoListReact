@@ -20,6 +20,10 @@ form{
 form input,label,textarea{
     margin-bottom: 15px;
 }
+textarea{
+    width: 500px;
+    height: 200px;
+}
 form button{
     padding: 10px;
 }

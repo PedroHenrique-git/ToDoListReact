@@ -1,18 +1,32 @@
 import React from 'react';
 
-function ListItem(props){
+function ButtonEditar(props){
     return (
-        <ul>
-          {props.tks.map(task => (
-            <li>
-                <h1>{task.nameTask}</h1>
-                <p>{task.descTask}</p>
-                <button className="editar">Editar tarefa</button>
-                <button className="exluir">Exluir tarefa</button>
-            </li>
-          ))}
-        </ul>
-    );   
+        <button onClick={props.onClick} className="editar">{props.value}</button>
+    );
+}
+function ButtonExcluir(props){
+    return (
+        <button onClick={props.onClick} className="excluir">{props.value}</button>
+    );
+}
+
+class ListItem extends React.Component{
+    render(){
+        return(
+            <ul>
+                {this.props.tks.map((task,index) => (
+                <li key={index}>
+                    <h1>{task.nameTask}</h1>
+                    <p>{task.descTask}</p>
+                    <ButtonEditar onClick={() => this.props.update(index)} value={this.props.text} className="editar"/>
+                    <ButtonExcluir onClick={() => this.props.delete(index)}  value="Exluir" className="exluir"/>
+                </li>
+                ))}
+            </ul>
+        ); 
+    }
+        
 }
 
 export default class TodoApp extends React.Component{
@@ -22,10 +36,45 @@ export default class TodoApp extends React.Component{
             valueInput: '',
             valueTextArea: '',
             tasks: [],
+            id: 0,
         }
+        this.valueButtonText = 'Editar';
         this.handleChangeInput = this.handleChangeInput.bind(this);
         this.handleChangeTextArea = this.handleChangeTextArea.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.changeId = this.changeId.bind(this);
+        this.deleteL = this.deleteL.bind(this);
+        this.updateL = this.updateL.bind(this);
+    }
+    deleteL(index){
+        this.state.tasks.splice(index,1);
+        this.setState({
+            tasks: this.state.tasks,
+        })
+        console.log(this)
+    }
+    updateL(index){
+        const task = this.state.tasks.splice(index,1);
+        this.setState({
+            valueInput: task[0].nameTask,
+            valueTextArea: task[0].descTask,
+        });
+        
+        task[0].nameTask = this.state.valueInput;
+        task[0].descTask = this.state.valueTextArea;
+        
+        console.log(task[0])
+
+        this.setState({
+            tasks: this.state.tasks.concat(task[0]),
+            valueInput: '',
+            valueTextArea: '',
+        });
+    }
+    changeId(){
+        this.setState({
+            id: this.state.id + 1,
+        })
     }
     handleChangeInput(event){
         this.setState({
@@ -41,12 +90,15 @@ export default class TodoApp extends React.Component{
         event.preventDefault();
         this.setState({
             tasks: this.state.tasks.concat({
+                id: this.state.id,
                 nameTask: this.state.valueInput,
-                descTask: this.state.valueTextArea,   
-            })
+                descTask: this.state.valueTextArea,
+            }),
+            valueInput: '',
+            valueTextArea: '',   
         })
-        console.log(this.state.tasks);
     }
+    
     render(){
         return(
             <div className="container">
@@ -55,10 +107,10 @@ export default class TodoApp extends React.Component{
                     <input type="text" name="nome-tarefa" value={this.state.valueInput} onChange={this.handleChangeInput}/>
                     <label htmlFor="descricao-tarefa">Descrição da tarefa: </label>
                     <textarea name="descricao-tarefa" value={this.state.valueTextArea} onChange={this.handleChangeTextArea}/>
-                    <button>Criar tarefa</button>
+                    <button onClick={this.changeId}>Criar tarefa</button>
                 </form>
                 <div className="container-tasks">
-                    <ListItem tks={this.state.tasks}/>
+                    <ListItem text={this.valueButtonText}delete={this.deleteL} update={this.updateL} tks={this.state.tasks}/>
                 </div>
             </div>
         );
