@@ -2,5 +2,5 @@
 
 <p>Fiz esse projeto para treinar alguns conceitos que aprendi durante a leitura da documentação do React</p>
 
-<img src="image/desktop_version.png"/>
-<img src="image/mobile_version.png"/>
+<img src="images/desktop_version.png"/>
+<img src="images/mobile_version.png"/>
