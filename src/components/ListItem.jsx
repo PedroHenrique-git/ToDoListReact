@@ -11,7 +11,7 @@ export default class ListItem extends React.Component{
                     <h1>{task.nameTask}</h1>
                     <p>{task.descTask}</p>
                     <div className="div-buttons">
-                        <ButtonEditar onClick={() => this.props.update(index)} value={this.props.text} className="editar"/>
+                        <ButtonEditar onClick={() => this.props.update(index)} value="Editar" className="editar"/>
                         <ButtonExcluir onClick={() => this.props.delete(index)}  value="Exluir" className="exluir"/>
                     </div>
                 </li>

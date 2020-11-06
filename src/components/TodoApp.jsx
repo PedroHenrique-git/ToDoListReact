@@ -10,7 +10,7 @@ export default class TodoApp extends React.Component{
             tasks: [],
             id: 0,
         }
-        this.valueButtonText = 'Editar';
+        
         this.handleChangeInput = this.handleChangeInput.bind(this);
         this.handleChangeTextArea = this.handleChangeTextArea.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
