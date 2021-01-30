@@ -1,4 +1,3 @@
-<h1>Lista de tarefas feita em ReactJs</h1>
 
 ## React js task list
 
