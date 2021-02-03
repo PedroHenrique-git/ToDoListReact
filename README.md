@@ -5,7 +5,7 @@ I did this project to train some concepts that I learned while reading the React
 
 ## Getting Started
 
-install dependencies: <b>npm run install</b> 
+install dependencies: <b>npm install</b> 
 
 start project: <b>npm run start</b>
 
