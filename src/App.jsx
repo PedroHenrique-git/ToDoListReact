@@ -1,10 +1,7 @@
-import React from 'react';
-import TodoApp from './components/TodoApp';
+import Index from './pages/Index/Index';
 
-function App(){
-    return(
-        <TodoApp />
-    );
+export default function App() {
+  return (
+    <Index />
+  );
 }
-
-export default App;

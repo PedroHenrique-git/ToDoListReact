@@ -1,0 +1,106 @@
+$color1: #000000;
+$color2: #0e1423;
+$color3: #3c4653;
+$color4: #a0b2ca;
+$color5: #d1e5e7;
+
+.principal_container {
+
+    .task_section {
+        background: $color3;
+        max-width: 760px;
+        margin: 100px auto 0 auto;
+        padding: 25px;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+
+        .task_form {
+            width: 100%;
+
+            form {
+                border-bottom: 2px solid $color5;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                input {
+                    background: transparent;
+                    border: none;
+                    color: $color5;
+                    font-size: 1.4em;
+                    outline: none;
+                    padding: 8px;
+                    height: 45px;
+                    width: 90%;
+
+                    &::placeholder { 
+                        font-size: 1.4em;    
+                    }
+                }
+
+                button {
+                    border: none;
+                    background: transparent;
+                    cursor: pointer;
+                }
+            }
+        }
+
+        .tasks_list {
+            margin-top: 25px;
+            width: 100%;
+
+            .task {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                width: 100%;
+
+                p {
+                    color: $color5;
+                    font-size: 1.4em;
+                }
+
+                .task_actions {
+                    display: flex;
+
+                    button {
+                        background: transparent;
+                        border: none;
+                        cursor: pointer;
+    
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+    
+                        &:first-of-type {
+                            margin-right: 10px;
+                        }
+    
+                        svg {
+                            color: $color5;
+                            font-size: 2.2em;
+                        }
+                    }
+                }
+
+                .edit_input {
+                    background: transparent;
+                    border: none;
+                    border: 1px solid $color5;
+                    border-radius: 10px;
+                    color: $color5;
+                    font-size: 1.3em;
+                    outline: none;
+                    padding: 2px 8px;
+                    width: 75%;
+                    display: none;
+                }
+            }
+        }
+    }
+
+}

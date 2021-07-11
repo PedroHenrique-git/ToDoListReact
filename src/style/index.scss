@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Gorditas&family=Kadwa&display=swap');
+
+$font-weight-padrao: 100;
+$background: #0e1423;
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Kadwa', serif;
+    font-weight: $font-weight-padrao;
+}
+
+html {
+    background: $background;
+}
+
+html, body, #root {
+    width: 100%;
+}
